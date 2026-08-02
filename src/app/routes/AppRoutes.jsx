@@ -1,9 +1,10 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+import { createBrowserRouter, Router, RouterProvider } from 'react-router'
 import AuthLayout from '../layouts/AuthLayout'
 import Login from '../../features/auth/ui/pages/Login'
 import Register from '../../features/auth/ui/pages/Register'
 import DashboardLayout from '../layouts/DashboardLayout'
+import Home from '../../features/dashboard/ui/pages/Home'
 
 const AppRoutes = () => {
     let router = createBrowserRouter([
@@ -25,12 +26,19 @@ const AppRoutes = () => {
         {
             path:"/home",
             element:<DashboardLayout/>,
-            children:{}
+            children:[
+                {
+                    path:"",
+                    element:<Home/>
+                }
+            ]
+
+            
         }
     ])
 
   return (
-    <RouterProvider/>
+    <RouterProvider router={router} />
   )
 }
 
